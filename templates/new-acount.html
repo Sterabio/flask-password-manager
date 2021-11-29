@@ -1,0 +1,42 @@
+{% extends "l2.html" %}
+{% block content %}
+<h1>New Acount</h1>
+<div class="box1">
+    <form method="POST">
+    <label>Name:</label>
+    <input class="form-control" type="text" name=master_name>
+    <fieldset class="row">
+        <!-- action="/preset/new/" -->
+        <div class="form-group">
+        
+    </div>
+        {%for a in data%}
+        <div class="form-group">
+            <label>{{a}}:</label>
+            <input class="form-control" type="text" name={{a}}>
+        </div>
+        {%endfor%}
+
+        
+
+        <button class="btn btn-primary"type="submit" name="act" value="go">go</button>
+    
+
+
+
+
+</form>
+
+<form method="POST">
+    <button type="submit" name="act" value="pass_gen">gen</button>
+
+
+</form>
+</fieldset>
+</div>
+
+
+
+
+{% endblock content %}
+

@@ -1,0 +1,16 @@
+{% extends "l2.html" %}
+{% block content %}
+<div class="box1">
+{%for a in acounts%}
+
+<a href="/view/{{a}}/">
+<input class ="btn" type="submit" value={{a}} name="action1"/>
+<!-- <h1>{{a}}</h1> -->
+</a>
+
+{%endfor%}
+</div>
+
+
+
+{% endblock content %}

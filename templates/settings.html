@@ -1,0 +1,61 @@
+{% extends "l2.html" %}
+{% block content %}
+
+<div class="box1">
+    <fieldset class="row">
+        <h3>{{id}}</h1>
+
+       <form method="POST">
+        <div class="dropdown">
+            <a class="dropbtn">ID</a>
+            <div class="dropdown-content">
+                {%for a in ids%}
+                    <button class="btn1"type="submit" name="iid" value="{{a}}">{{a}}</button>
+                {%endfor%}
+            </div>
+            
+          </div> 
+    </fieldset>
+    
+        <fieldset class="row">
+        <div>
+            <label>ID:</label>
+            <input class="form-control" type="text" name=id>
+            <button class="btn1"type="submit" name="i" value="id">set</button>
+        </div>
+    </fieldset>
+    <fieldset class="row">
+
+        <form method="POST">
+        <div>
+            <h2>{{pk}}</h2>
+            <label>private key path:</label>
+            <input class="form-control" type="text" name=pr_key>
+            <button class="btn1"type="submit" name="i" value="pr_key">set</button>
+        </div>
+    </fieldset>
+    <fieldset class="row">
+    <form method="POST" onSubmit="return confirm('Are you sure you wish for new keys???');">
+        <button class="btn1" name="gen" value = "gen">generate</button>
+    </fieldset>
+   
+    <fieldset class="row">
+        <div>
+            <form method="POST">
+            <label>new id: </label>
+            <input class="form-control" type="text" name=name>
+            <button class="btn1"type="submit" name="ii" value="name">add</button>
+        </form>
+        </div>
+    </fieldset>
+
+</form>
+    
+        
+        
+
+</div>
+
+
+
+{% endblock content %}

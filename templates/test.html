@@ -1,0 +1,91 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="/static/css/s.css">
+
+</head> -->
+{% extends "l2.html" %}
+{% block content %}
+<form class="box" method="POST" id="form1" runat="server">
+
+
+    <div class="dropdown">
+        <a class="dropbtn">presets</a>
+        <div class="dropdown-content">
+            {%for a in presets%}
+            <a href="/preset/{{a}}/">{{a}}</a>
+            {%endfor%}
+        </div>
+      </div>
+
+
+    <div>
+        <input placeholder="hi" id="name" type="text">
+        <input class="btn1" id="btnAdd" type="button" value="add" onclick="AddSuggestionCart()" />
+    </div>
+
+    
+    
+    <br />
+    <br />
+    <div>
+        <label for="master_name">Master_name</label>
+    <input class="form-control" type="text" name=master_name>
+    </div>
+    
+    <div class="shadow" id="SuggestionCartContainer">
+        
+        
+        <!--Textboxes will be added here -->
+        
+    </div>
+    <div>
+        <label for="master_name">Password</label>
+    <input class="form-control" type="password" name=Password>
+    </div>
+    
+        
+    <br />
+    <asp:Button ID="btnPost" runat="server" Text="Post" OnClick="Post" />
+    
+    <button class="btn"type="submit" name="act" value="go">go</button>
+    <button class="btn"type="submit" name="act" value="add">add as preset</button>
+</form>
+
+
+<script type="text/javascript">
+    function GetDynamicSuggestionCart(value){
+
+        var name = document.getElementById('name').value
+
+        return  '<label for=' + name + '>' + name + '   </label>'+
+                '<input class="form-control" name =' + name + ' type="text" placeholder="' + name + '" value = "' + value + '" />' +
+                
+                '<input class="inbutton" type="button" value="Remove" onclick = "RemoveSuggestionCart(this)" />'
+                
+    }
+    function AddSuggestionCart() {
+        var div = document.createElement('DIV');
+        div.className = "row";
+        div.innerHTML = GetDynamicSuggestionCart("");
+        document.getElementById("SuggestionCartContainer").appendChild(div);
+    }
+     
+    function RemoveSuggestionCart(div) {
+        document.getElementById("SuggestionCartContainer").removeChild(div.parentNode);
+    }
+     
+    function RecreateDynamicTextboxes() {
+        var comments_data = eval('<%=Values%>');
+        if (comments_data != null) {
+            var html = "";
+            for (var i = 0; i < comments_data.length; i++) {
+                html += "<div>" + GetDynamicSuggestionCart(comments_data[i]) + "</div>";
+            }
+            document.getElementById("SuggestionCartContainer").innerHTML = html;
+        }
+    }
+    window.onload = RecreateDynamicTextboxes;
+    </script>
+
+{% endblock content %}

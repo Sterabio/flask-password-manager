@@ -1,0 +1,22 @@
+{% extends "l2.html" %}
+{% block content %}
+<div class ="box1">
+<h1 class="text" >{{name}}</h1>
+          
+        {%for a in data%}
+        <p class="text">{{a}}:    {{data[a]}}</p>
+        {%endfor%}
+        
+
+
+
+        
+        <form method="POST" onSubmit="return confirm('Are you sure you wish to delete?');">
+                <button class="btn1" name="value" value = "delete">delete</button>
+
+        
+        </form>
+     
+</div>        
+{% endblock content %}
+<!-- type="submit" class="btn btn-primary" -->
